@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Client\TaxApp\Api;
+namespace SprykerTest\Client\TaxApp\Api\Sender;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\StoreTransfer;
@@ -19,6 +19,7 @@ use SprykerTest\Client\TaxApp\TaxAppClientTester;
  * @group Client
  * @group TaxApp
  * @group Api
+ * @group Sender
  * @group TaxAppRequestSenderTest
  * Add your own group annotations below this line
  */
