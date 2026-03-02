@@ -25,11 +25,6 @@ class TaxAppToOauthClientFacadeBridge implements TaxAppToOauthClientFacadeInterf
         $this->oauthClientFacade = $oauthClientFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\AccessTokenResponseTransfer
-     */
     public function getAccessToken(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenResponseTransfer
     {
         return $this->oauthClientFacade->getAccessToken($accessTokenRequestTransfer);

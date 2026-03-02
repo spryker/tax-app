@@ -19,22 +19,12 @@ use Spryker\Client\TaxApp\TaxAppClientInterface;
 
 class TaxAppBusinessAssertionHelper extends Module
 {
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
     public function assertCalculableObjectTransferExtendedWithTaxMetadata(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         $this->assertNotNull($calculableObjectTransfer->getTaxMetadata());
         $this->assertNotNull($calculableObjectTransfer->getItems()[0]->getTaxMetadata());
     }
 
-    /**
-     * @param \Spryker\Client\TaxApp\TaxAppClientInterface $taxAppClientMock
-     *
-     * @return void
-     */
     public function assertRequestTaxQuotationReceivesSalesItemMappedWithMerchantStockAddress(TaxAppClientInterface $taxAppClientMock): void
     {
         $expectation = $this->haveExpectedTaxQuotationRequestSaleItems();
@@ -88,12 +78,6 @@ class TaxAppBusinessAssertionHelper extends Module
             }));
     }
 
-    /**
-     * @param \Spryker\Client\TaxApp\TaxAppClientInterface $taxAppClientMock
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $mockedCalculableObjectTransfer
-     *
-     * @return void
-     */
     public function assertRequestTaxQuotationReceivesSalesItemWithCorrectItemsAndWithoutWarehouseAddress(
         TaxAppClientInterface $taxAppClientMock,
         CalculableObjectTransfer $mockedCalculableObjectTransfer
@@ -157,11 +141,6 @@ class TaxAppBusinessAssertionHelper extends Module
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
     public function assertQuoteHasCorrectGrandTotal(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         $itemsSumPriceToPayAggregation = 0;
@@ -180,11 +159,6 @@ class TaxAppBusinessAssertionHelper extends Module
         $this->assertEquals($grandTotal, ($expensesSumPriceToPayAggregation + $itemsSumPriceToPayAggregation));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
     public function assertQuoteHasZeroTaxTotal(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         $itemsSumTaxAmountFullAggregation = 0;
@@ -202,11 +176,6 @@ class TaxAppBusinessAssertionHelper extends Module
         $this->assertEquals(0, $expensesSumTaxAmount);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     *
-     * @return void
-     */
     public function assertAllTaxAppConfigsForTenantHaveNewApiUrl(
         TaxAppConfigTransfer $taxAppConfigTransfer
     ): void {
@@ -224,11 +193,6 @@ class TaxAppBusinessAssertionHelper extends Module
         }
     }
 
-    /**
-     * @param string $vendorCode
-     *
-     * @return void
-     */
     public function assertAllTaxAppConfigsForTenantHaveBeenDeleted(string $vendorCode): void
     {
         $taxAppConfigEntityCollectionDeleted = SpyTaxAppConfigQuery::create()
@@ -238,12 +202,6 @@ class TaxAppBusinessAssertionHelper extends Module
         $this->assertTrue($taxAppConfigEntityCollectionDeleted->count() == 0);
     }
 
-    /**
-     * @param string $vendorCodeNotDeleted
-     * @param string $vendorCodeDeleted
-     *
-     * @return void
-     */
     public function assertProperTaxAppConfigsHaveBeenDeletedByVendorCodes(string $vendorCodeNotDeleted, string $vendorCodeDeleted): void
     {
         $deletedTaxAppConfigEntityCollection = SpyTaxAppConfigQuery::create()

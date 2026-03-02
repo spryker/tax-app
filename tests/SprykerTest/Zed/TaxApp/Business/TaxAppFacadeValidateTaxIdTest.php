@@ -40,9 +40,6 @@ class TaxAppFacadeValidateTaxIdTest extends Unit
      */
     protected StoreTransfer $storeTransfer;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -57,9 +54,6 @@ class TaxAppFacadeValidateTaxIdTest extends Unit
         $this->tester->mockFactoryMethod('getStoreFacade', $storeFacadeMock);
     }
 
-    /**
-     * @return void
-     */
     public function testGivenAValidTaxIdWhenTheApiReturnsASuccessfulResponseThenATaxIdValidationHistoryEntryIsCreated(): void
     {
         // Arrange
@@ -94,9 +88,6 @@ class TaxAppFacadeValidateTaxIdTest extends Unit
         $this->tester->assertTaxIdValidationHistoryEntryDoesNotExist($taxAppValidationRequestTransfer->getTaxId(), $taxAppValidationRequestTransfer->getCountryCode(), $taxAppValidationResponseTransfer->getAdditionalInfo());
     }
 
-    /**
-     * @return void
-     */
     public function testGivenAMalformedRequestWhenTheTaxIdValidationApiIsCalledThenTheResponseContainsAServiceUnavailableMessage(): void
     {
         // Arrange
@@ -115,9 +106,6 @@ class TaxAppFacadeValidateTaxIdTest extends Unit
         $this->assertSame('Tax Validator API is unavailable.', $taxAppValidationResponseTransfer->getMessage());
     }
 
-    /**
-     * @return void
-     */
     public function testGivenAMalformedRequestWhenTheTaxIdValidationApiIsCalledThenAFailedResponseIsReturned(): void
     {
         // Arrange
@@ -142,9 +130,6 @@ class TaxAppFacadeValidateTaxIdTest extends Unit
         $this->assertSame('message', $taxAppValidationResponseTransfer->getMessage());
     }
 
-    /**
-     * @return void
-     */
     public function testValidateTaxIdWhenServiceIsDisabledThenTheErrorMessageIsReturnedInTheResponse(): void
     {
         // Arrange

@@ -81,11 +81,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -104,11 +99,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
@@ -117,11 +107,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function provideKernelAppFacade(Container $container): Container
     {
         $container->set(static::FACADE_KERNEL_APP, function (Container $container): TaxAppToKernelAppFacadeInterface {
@@ -131,11 +116,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addTaxAppClient(Container $container): Container
     {
         $container->set(static::CLIENT_TAX_APP, function (Container $container) {
@@ -145,11 +125,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addOauthClientFacade(Container $container): Container
     {
         $container->set(static::FACADE_OAUTH_CLIENT, function (Container $container) {
@@ -159,11 +134,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addSalesFacade(Container $container): Container
     {
         $container->set(static::FACADE_SALES, function (Container $container) {
@@ -173,11 +143,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStoreFacade(Container $container): Container
     {
         $container->set(static::FACADE_STORE, function (Container $container) {
@@ -187,11 +152,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUtilEncodingService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
@@ -201,11 +161,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addMessageBrokerFacade(Container $container): Container
     {
         $container->set(static::FACADE_MESSAGE_BROKER, function (Container $container) {
@@ -215,11 +170,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCalculableObjectTaxAppExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CALCULABLE_OBJECT_TAX_APP_EXPANDER, function () {
@@ -229,11 +179,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addOrderTaxAppExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_ORDER_TAX_APP_EXPANDER, function () {
@@ -243,11 +188,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addFallbackQuoteCalculationPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_FALLBACK_QUOTE_CALCULATION, function () {
@@ -257,11 +197,6 @@ class TaxAppDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addFallbackOrderCalculationPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_FALLBACK_ORDER_CALCULATION, function () {

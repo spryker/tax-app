@@ -16,21 +16,12 @@ use Spryker\Zed\TaxApp\Persistence\TaxAppRepositoryInterface;
 
 class ConfigReader implements ConfigReaderInterface
 {
-    /**
-     * @param \Spryker\Zed\TaxApp\Persistence\TaxAppRepositoryInterface $taxAppRepository
-     * @param \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         protected TaxAppRepositoryInterface $taxAppRepository,
         protected TaxAppToStoreFacadeInterface $storeFacade
     ) {
     }
 
-    /**
-     * @param int $idStore
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigTransfer|null
-     */
     public function getTaxAppConfigByIdStore(int $idStore): ?TaxAppConfigTransfer
     {
         $taxAppConfigConditionsTransfer = new TaxAppConfigConditionsTransfer();
@@ -53,9 +44,6 @@ class ConfigReader implements ConfigReaderInterface
         return $taxAppConfigCollectionTransfer->getTaxAppConfigs()->offsetGet(0);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\TaxAppConfigTransfer|null
-     */
     public function findTaxAppConfigForCurrentStore(): ?TaxAppConfigTransfer
     {
         $taxAppConfigConditionsTransfer = new TaxAppConfigConditionsTransfer();

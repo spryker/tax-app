@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\TaxAppSaleTransfer;
 
 interface PriceAggregatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     public function calculatePriceAggregation(
         TaxAppSaleTransfer $taxAppSaleTransfer,
         CalculableObjectTransfer $calculableObjectTransfer

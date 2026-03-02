@@ -24,11 +24,6 @@ class TaxAppEntityManager extends AbstractEntityManager implements TaxAppEntityM
 {
     use ActiveRecordBatchProcessorTrait;
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxIdValidationHistoryTransfer $taxIdValidationHistoryTransfer
-     *
-     * @return void
-     */
     public function saveTaxIdValidationHistory(TaxIdValidationHistoryTransfer $taxIdValidationHistoryTransfer): void
     {
         $taxIdValidationHistoryEntity = new SpyTaxIdValidationHistory();
@@ -80,11 +75,6 @@ class TaxAppEntityManager extends AbstractEntityManager implements TaxAppEntityM
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
-     *
-     * @return void
-     */
     public function deleteTaxAppConfig(TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer): void
     {
         $taxAppConfigCriteriaTransfer->getTaxAppConfigConditionsOrFail()->requireVendorCodes();
@@ -96,12 +86,6 @@ class TaxAppEntityManager extends AbstractEntityManager implements TaxAppEntityM
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Propel\Runtime\Collection\Collection
-     */
     protected function getTaxAppConfigEntityCollectionByTaxAppConfigAndStore(
         TaxAppConfigTransfer $taxAppConfigTransfer,
         StoreTransfer $storeTransfer
@@ -120,11 +104,6 @@ class TaxAppEntityManager extends AbstractEntityManager implements TaxAppEntityM
             ->find();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
-     *
-     * @return \Propel\Runtime\Collection\Collection
-     */
     protected function getTaxAppConfigEntityCollectionByTaxAppConfigCriteria(TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer): Collection
     {
         $taxAppConfigConditionTransfer = $taxAppConfigCriteriaTransfer->getTaxAppConfigConditionsOrFail();

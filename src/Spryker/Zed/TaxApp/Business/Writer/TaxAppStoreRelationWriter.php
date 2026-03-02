@@ -13,19 +13,12 @@ use Spryker\Zed\TaxApp\Persistence\TaxAppRepositoryInterface;
 
 class TaxAppStoreRelationWriter implements TaxAppStoreRelationWriterInterface
 {
-    /**
-     * @param \Spryker\Zed\TaxApp\Persistence\TaxAppRepositoryInterface $taxAppRepository
-     * @param \Spryker\Zed\TaxApp\Business\Config\ConfigWriterInterface $configWriter
-     */
     public function __construct(
         protected TaxAppRepositoryInterface $taxAppRepository,
         protected ConfigWriterInterface $configWriter
     ) {
     }
 
-    /**
-     * @return void
-     */
     public function refreshTaxAppStoreRelations(): void
     {
         $taxAppConfigCollectionTransfer = $this->taxAppRepository

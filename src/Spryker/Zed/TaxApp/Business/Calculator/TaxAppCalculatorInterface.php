@@ -12,11 +12,5 @@ use Generated\Shared\Transfer\TaxAppConfigTransfer;
 
 interface TaxAppCalculatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     *
-     * @return void
-     */
     public function recalculate(CalculableObjectTransfer $calculableObjectTransfer, TaxAppConfigTransfer $taxAppConfigTransfer): void;
 }

@@ -64,12 +64,6 @@ class TaxAppRequestSender implements TaxAppRequestSenderInterface
      */
     protected int $requestTimeoutSeconds;
 
-    /**
-     * @param \Spryker\Client\TaxApp\Api\Builder\TaxAppHeaderBuilderInterface $taxAppHeaderBuilder
-     * @param \Spryker\Client\TaxApp\Dependency\External\TaxAppToHttpClientAdapterInterface $httpClient
-     * @param \Spryker\Shared\TaxApp\Dependency\Service\TaxAppToUtilEncodingServiceInterface $utilEncodingService
-     * @param int $requestTimeoutSeconds
-     */
     public function __construct(
         TaxAppHeaderBuilderInterface $taxAppHeaderBuilder,
         TaxAppToHttpClientAdapterInterface $httpClient,
@@ -82,13 +76,6 @@ class TaxAppRequestSender implements TaxAppRequestSenderInterface
         $this->requestTimeoutSeconds = $requestTimeoutSeconds;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxCalculationRequestTransfer $taxCalculationRequestTransfer
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxCalculationResponseTransfer
-     */
     public function requestTaxQuotation(
         TaxCalculationRequestTransfer $taxCalculationRequestTransfer,
         TaxAppConfigTransfer $taxAppConfigTransfer,
@@ -113,13 +100,6 @@ class TaxAppRequestSender implements TaxAppRequestSenderInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxRefundRequestTransfer $taxRefundRequestTransfer
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxCalculationResponseTransfer
-     */
     public function requestTaxRefund(
         TaxRefundRequestTransfer $taxRefundRequestTransfer,
         TaxAppConfigTransfer $taxAppConfigTransfer,
@@ -185,12 +165,6 @@ class TaxAppRequestSender implements TaxAppRequestSenderInterface
         return $taxCalculationResponseTransfer;
     }
 
-    /**
-     * @param \Throwable|\Exception $e
-     * @param \Generated\Shared\Transfer\TaxCalculationResponseTransfer $taxCalculationResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxCalculationResponseTransfer
-     */
     protected function getErrorMessage(Throwable|Exception $e, TaxCalculationResponseTransfer $taxCalculationResponseTransfer): TaxCalculationResponseTransfer
     {
         $errorTransfer = (new ApiErrorMessageTransfer())->setCode($e->getCode())->setDetail($e->getMessage());

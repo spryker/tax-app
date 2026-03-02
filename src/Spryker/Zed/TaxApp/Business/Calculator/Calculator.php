@@ -60,13 +60,6 @@ class Calculator implements CalculatorInterface
      */
     protected TaxAppCalculatorInterface $taxAppCalculator;
 
-    /**
-     * @param \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\TaxApp\Business\Config\ConfigReaderInterface $configReader
-     * @param \Spryker\Zed\TaxApp\Business\Calculator\FallbackCalculatorInterface $fallbackQuoteCalculator
-     * @param \Spryker\Zed\TaxApp\Business\Calculator\FallbackCalculatorInterface $fallbackOrderCalculator
-     * @param \Spryker\Zed\TaxApp\Business\Calculator\TaxAppCalculatorInterface $taxAppCalculator
-     */
     public function __construct(
         TaxAppToStoreFacadeInterface $storeFacade,
         ConfigReaderInterface $configReader,
@@ -81,11 +74,6 @@ class Calculator implements CalculatorInterface
         $this->taxAppCalculator = $taxAppCalculator;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
     public function recalculate(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         $taxAppConfigTransfer = $this->getTaxAppConfigTransfer($calculableObjectTransfer);
@@ -106,11 +94,6 @@ class Calculator implements CalculatorInterface
         $this->taxAppCalculator->recalculate($calculableObjectTransfer, $taxAppConfigTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigTransfer|null
-     */
     protected function getTaxAppConfigTransfer(CalculableObjectTransfer $calculableObjectTransfer): ?TaxAppConfigTransfer
     {
         $storeTransfer = $calculableObjectTransfer->getStoreOrFail();
@@ -123,11 +106,6 @@ class Calculator implements CalculatorInterface
         return $this->configReader->getTaxAppConfigByIdStore($idStore);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
     protected function recalculateUsingFallbackCalculator(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         if ($calculableObjectTransfer->getOriginalQuote()) {
@@ -141,11 +119,6 @@ class Calculator implements CalculatorInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     protected function setHideTaxInCartFlagToTrue(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         if ($calculableObjectTransfer->getOriginalQuote() !== null && $calculableObjectTransfer->getPriceMode() === ItemExpensePriceRetriever::PRICE_MODE_NET) {
@@ -155,11 +128,6 @@ class Calculator implements CalculatorInterface
         return $calculableObjectTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
     protected function setHideTaxInCartFlagToFalse(CalculableObjectTransfer $calculableObjectTransfer): void
     {
         if ($calculableObjectTransfer->getOriginalQuote() !== null) {

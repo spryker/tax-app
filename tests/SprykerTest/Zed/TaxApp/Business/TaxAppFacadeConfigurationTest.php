@@ -38,9 +38,6 @@ class TaxAppFacadeConfigurationTest extends Unit
      */
     protected TaxAppBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -49,9 +46,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->configureStoreFacadeGetStoreByStoreReferenceMethod();
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigDoesNotExistSaveTaxAppConfigSuccessfullySavesConfig(): void
     {
         // Arrange
@@ -66,9 +60,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeIsConfigured($taxAppConfigTransfer->getVendorCode(), $storeTransfer->getIdStore());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigDoesNotExistSaveTaxAppConfigWithMultipleStoresSuccessfullySavesConfig(): void
     {
         // Arrange
@@ -84,9 +75,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeIsConfiguredWithMultipleStores($taxAppConfigTransfer->getVendorCode(), [$storeTransfer1, $storeTransfer2]);
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigDoesNotExistSaveTaxAppConfigWithTenantIdentifierSuccessfullySavesConfig(): void
     {
         // Arrange
@@ -103,9 +91,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeIsConfigured($taxAppConfigTransfer->getVendorCode(), $storeTransfer->getIdStore());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigExistsSaveTaxAppConfigSuccessfullyUpdatesExistingConfig(): void
     {
         // Arrange
@@ -163,9 +148,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeIsConfigured($taxAppConfigTransfer->getVendorCode(), $storeTransfer->getIdStore(), true);
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigExistsDeleteTaxAppConfigIsSuccessful(): void
     {
         // Arrange
@@ -186,9 +168,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeDoesNotExist($taxAppConfigTransfer->getVendorCode());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigExistsDeleteTaxAppConfigWithMultipleStoresIsSuccessful(): void
     {
         // Arrange
@@ -214,9 +193,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeDoesNotExist($vendorCode);
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigExistsDeleteTaxAppConfigWithoutStoreReferenceIsSuccessful(): void
     {
         // Arrange
@@ -234,9 +210,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeDoesNotExist($taxAppConfigTransfer->getVendorCode());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigDoesNotExistDeleteTaxAppConfigThrowsException(): void
     {
         // Arrange
@@ -250,9 +223,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->getFacade()->deleteTaxAppConfig($taxAppConfigCriteriaTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigCouldNotPersistedAnExceptionIsThrown(): void
     {
         // Arrange
@@ -271,9 +241,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->getFacade()->saveTaxAppConfig((new TaxAppConfigTransfer())->setStoreReference('de-DE'));
     }
 
-    /**
-     * @return void
-     */
     public function testWhenTaxAppConfigDoesNotExistAndStoreReferenceIsNullSaveTaxAppConfigSuccessfullySavesConfig(): void
     {
         // Arrange
@@ -287,9 +254,6 @@ class TaxAppFacadeConfigurationTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeIsConfigured($taxAppConfigTransfer->getVendorCode(), $storeTransfer->getIdStore());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenMultipleTaxAppConfigExistsAndStoreReferenceIsNullDeleteTaxAppConfigSuccessfullyDeletesAllConfigsForTenant(): void
     {
         // Arrange

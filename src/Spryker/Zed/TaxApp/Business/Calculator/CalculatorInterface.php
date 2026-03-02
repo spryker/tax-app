@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\CalculableObjectTransfer;
 
 interface CalculatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return void
-     */
     public function recalculate(CalculableObjectTransfer $calculableObjectTransfer): void;
 }

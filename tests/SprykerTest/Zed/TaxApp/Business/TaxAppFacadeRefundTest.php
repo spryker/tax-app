@@ -36,9 +36,6 @@ class TaxAppFacadeRefundTest extends Unit
      */
     protected TaxAppBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -75,11 +72,6 @@ class TaxAppFacadeRefundTest extends Unit
         $this->tester->getFacade()->processOrderRefund($orderItemsIds, $orderTransfer->getIdSalesOrder());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     protected function getOrderTransferForRefund(StoreTransfer $storeTransfer): OrderTransfer
     {
         $orderTransfer = $this->tester->createOrderByStateMachineProcessName(

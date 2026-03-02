@@ -33,9 +33,6 @@ class ConfigureTaxAppTest extends Unit
      */
     protected AsyncApiTester $tester;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -43,9 +40,6 @@ class ConfigureTaxAppTest extends Unit
         $this->tester->ensureTaxAppConfigTableIsEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testWhenConfigureTaxAppMessageIsReceivedThenTheTaxAppIsConfigured(): void
     {
         // Arrange
@@ -73,9 +67,6 @@ class ConfigureTaxAppTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeIsConfigured($configureTaxAppTransfer->getVendorCode(), $storeTransfer->getIdStore());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenConfigureTaxAppMessageIsReceivedAndTenantIdentifierIsPresentThenTheTaxAppIsConfigured(): void
     {
         // Arrange
@@ -104,9 +95,6 @@ class ConfigureTaxAppTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeIsConfigured($configureTaxAppTransfer->getVendorCode(), $storeTransfer->getIdStore());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenConfigureTaxAppMessageIsReceivedAndTenantIdentifierIsPresentButStoreReferenceIsNullThenTheTaxAppIsConfigured(): void
     {
         // Arrange
@@ -136,9 +124,6 @@ class ConfigureTaxAppTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeIsConfigured($configureTaxAppTransfer->getVendorCode(), $storeTransfer->getIdStore());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenConfigureTaxAppMessageIsReceivedAndNeitherEmitterOrActorIdArePresentThenAnExceptionIsThrown(): void
     {
         // Arrange

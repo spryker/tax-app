@@ -52,9 +52,6 @@ class TaxAppFacadeCalculationTest extends Unit
      */
     protected $storeTransfer;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -70,9 +67,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->mockFactoryMethod('getStoreFacade', $storeFacadeMock);
     }
 
-    /**
-     * @return void
-     */
     public function testCalculableObjectHasTaxTotalWhenRecalculateRequestsTaxFromExternalApiSuccessfully(): void
     {
         // Arrange
@@ -92,9 +86,6 @@ class TaxAppFacadeCalculationTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testCalculableObjectHasTheSameTaxRequestHashWhenRecalculateWasCalledTwiceWithoutChanges(): void
     {
         // Arrange
@@ -118,9 +109,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->assertSame($firstCalculationHash, $secondCalculationHash);
     }
 
-    /**
-     * @return void
-     */
     public function testCalculableObjectHasTheDifferentTaxRequestHashWhenWasRecalculateCalledTwiceWithChanges(): void
     {
         // Arrange
@@ -145,9 +133,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->assertNotEquals($firstCalculationHash, $secondCalculationHash);
     }
 
-    /**
-     * @return void
-     */
     public function testCalculableObjectHasZeroTaxTotalWhenShipmentIsMissingAndPriceModeIsNet(): void
     {
         // Arrange
@@ -198,9 +183,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->assertCalculableObjectTransferExtendedWithTaxMetadata($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testCalculableObjectHasSaleTransferExpandedWithMerchantStockAddressWhenRecalculateMethodIsCalled(): void
     {
         // Arrange
@@ -218,9 +200,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->getFacade()->recalculate($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testCalculableObjectHasSaleTransferWithItemsWhenMerchantStockAddressIsEmpty(): void
     {
         // Arrange
@@ -242,9 +221,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->getFacade()->recalculate($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testQuoteHasCorrectGrandTotalWhenPriceModeIsNetAndRecalculateRequestsTaxFromExternalApiSuccessfully(): void
     {
         // Arrange
@@ -269,9 +245,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->assertQuoteHasCorrectGrandTotal($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testQuoteHasZeroTaxTotalWhenRecalculateExternalApiRequestFails(): void
     {
         // Arrange
@@ -296,9 +269,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->assertQuoteHasZeroTaxTotal($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testQuoteHasCorrectGrandTotalWhenPriceModeIsGrossAndRecalculateRequestsTaxFromExternalApiSuccessfully(): void
     {
         // Arrange
@@ -324,9 +294,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->assertQuoteHasCorrectGrandTotal($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testQuoteHasHideTaxInCartFlagWhenTaxAppIsActive(): void
     {
         // Arrange
@@ -341,9 +308,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->assertTrue($calculableObjectTransfer->getOriginalQuote()->getHideTaxInCart());
     }
 
-    /**
-     * @return void
-     */
     public function testQuoteDoesNotHaveHideTaxInCartFlagWhenTaxAppIsNotActive(): void
     {
         // Arrange
@@ -359,9 +323,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->assertFalse($calculableObjectTransfer->getOriginalQuote()->getHideTaxInCart());
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateObjectItemsHaveSumTaxAmountWhenStoreIdIsNotProvidedInCalculableObject(): void
     {
         // Arrange
@@ -385,9 +346,6 @@ class TaxAppFacadeCalculationTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testRecalculateWithPriceInGrossModeAppliesExternalResultsCorrectly(): void
     {
         // Arrange
@@ -409,9 +367,6 @@ class TaxAppFacadeCalculationTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testRecalculateWithPriceInGrossModeDoesNotHaveHideTaxInCartFlag(): void
     {
         // Arrange
@@ -426,9 +381,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->assertEmpty($calculableObjectTransfer->getOriginalQuote()->getHideTaxInCart());
     }
 
-    /**
-     * @return void
-     */
     public function testRecalculateWithNonConfiguredSellerCountryCodeIsTakenFromDefaultStoreCountry(): void
     {
         // Arrange
@@ -455,9 +407,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->getFacade()->recalculate($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testRecalculateWithConfiguredSellerCountryCodeIsAppliedToTaxResponse(): void
     {
         // Arrange
@@ -483,9 +432,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->getFacade()->recalculate($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testRecalculateWithNonConfiguredCustomerCountryCodeIsTakenFromDefaultStoreCountry(): void
     {
         // Arrange
@@ -512,9 +458,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->getFacade()->recalculate($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testRecalculateWithConfiguredCustomerCountryCodeIsAppliedToTaxResponse(): void
     {
         // Arrange
@@ -540,9 +483,6 @@ class TaxAppFacadeCalculationTest extends Unit
         $this->tester->getFacade()->recalculate($calculableObjectTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testRecalculateWithProvidedBillingCountryIsSetToCustomerCountryCodeAppliedToTaxResponse(): void
     {
         // Arrange

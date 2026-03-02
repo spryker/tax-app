@@ -9,8 +9,5 @@ namespace Spryker\Zed\TaxApp\Business\Writer;
 
 interface TaxAppStoreRelationWriterInterface
 {
-    /**
-     * @return void
-     */
     public function refreshTaxAppStoreRelations(): void;
 }

@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\TaxAppValidationResponseTransfer;
 
 interface TaxIdValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppValidationRequestTransfer $taxAppValidationRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppValidationResponseTransfer
-     */
     public function validate(TaxAppValidationRequestTransfer $taxAppValidationRequestTransfer): TaxAppValidationResponseTransfer;
 }

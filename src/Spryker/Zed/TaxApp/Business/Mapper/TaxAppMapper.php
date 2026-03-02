@@ -64,12 +64,6 @@ class TaxAppMapper implements TaxAppMapperInterface
      */
     protected TaxAppToStoreFacadeInterface $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\TaxApp\Business\Mapper\Addresses\AddressMapperInterface $addressMapper
-     * @param \Spryker\Zed\TaxApp\Business\Mapper\Prices\ItemExpensePriceRetrieverInterface $priceFormatter
-     * @param \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\TaxApp\TaxAppConfig $taxAppConfig
-     */
     public function __construct(
         AddressMapperInterface $addressMapper,
         ItemExpensePriceRetrieverInterface $priceFormatter,
@@ -82,12 +76,6 @@ class TaxAppMapper implements TaxAppMapperInterface
         $this->taxAppConfig = $taxAppConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppSaleTransfer
-     */
     public function mapCalculableObjectToTaxAppSaleTransfer(
         CalculableObjectTransfer $calculableObjectTransfer,
         TaxAppSaleTransfer $taxAppSaleTransfer
@@ -149,14 +137,6 @@ class TaxAppMapper implements TaxAppMapperInterface
         return $taxAppSaleTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param string $priceMode
-     * @param \Generated\Shared\Transfer\AddressTransfer|null $billingAddressTransfer
-     * @param int $itemIndex
-     *
-     * @return \Generated\Shared\Transfer\TaxAppItemTransfer
-     */
     public function mapItemTransfersToSaleItemTransfers(
         ItemTransfer $itemTransfer,
         string $priceMode,
@@ -211,13 +191,6 @@ class TaxAppMapper implements TaxAppMapperInterface
         return $taxAppItemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppItemTransfer $taxAppItemTransfer
-     * @param \Generated\Shared\Transfer\MerchantStockAddressTransfer $merchantStockAddressTransfer
-     * @param \Generated\Shared\Transfer\ShippingWarehouseTransfer $shippingWarehouseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShippingWarehouseTransfer
-     */
     public function mapMerchantStockAddressTransferToShippingWarehouse(
         TaxAppItemTransfer $taxAppItemTransfer,
         MerchantStockAddressTransfer $merchantStockAddressTransfer,
@@ -238,13 +211,6 @@ class TaxAppMapper implements TaxAppMapperInterface
         return $shippingWarehouseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ExpenseTransfer $expenseTransfer
-     * @param string $priceMode
-     * @param \Generated\Shared\Transfer\AddressTransfer|null $billingAddressTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppShipmentTransfer
-     */
     public function mapExpenseTransferToSaleShipmentTransfer(
         ExpenseTransfer $expenseTransfer,
         string $priceMode,
@@ -296,11 +262,6 @@ class TaxAppMapper implements TaxAppMapperInterface
         throw new Exception(static::ORIGINAL_TRANSFER_MISSING_EXCEPTION);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer|\Generated\Shared\Transfer\QuoteTransfer $transfer
-     *
-     * @return string
-     */
     protected function getTransferIdentifier(OrderTransfer|QuoteTransfer $transfer): string
     {
         $transferIdentifier = null;
@@ -322,12 +283,6 @@ class TaxAppMapper implements TaxAppMapperInterface
         return $transferIdentifier;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppSaleTransfer
-     */
     public function mapOrderTransferToTaxAppSaleTransfer(OrderTransfer $orderTransfer, TaxAppSaleTransfer $taxAppSaleTransfer): TaxAppSaleTransfer
     {
         $calculableObjectTransfer = new CalculableObjectTransfer();
@@ -342,13 +297,6 @@ class TaxAppMapper implements TaxAppMapperInterface
         return $this->mapCalculableObjectToTaxAppSaleTransfer($calculableObjectTransfer, $taxAppSaleTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer|\Generated\Shared\Transfer\QuoteTransfer $originalTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppSaleTransfer
-     */
     public function setTaxSaleCountryCode(
         CalculableObjectTransfer $calculableObjectTransfer,
         TaxAppSaleTransfer $taxAppSaleTransfer,
@@ -374,11 +322,6 @@ class TaxAppMapper implements TaxAppMapperInterface
         return $taxAppSaleTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return string|null
-     */
     protected function findStoreCountryCode(CalculableObjectTransfer $calculableObjectTransfer): ?string
     {
         if (!empty($calculableObjectTransfer->getStoreOrFail()->getCountries()[0])) {

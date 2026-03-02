@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\TaxAppConfigTransfer;
 
 interface ConfigWriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     *
-     * @return void
-     */
     public function write(TaxAppConfigTransfer $taxAppConfigTransfer): void;
 }

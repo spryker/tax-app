@@ -34,10 +34,6 @@ class ConfigDeleter implements ConfigDeleterInterface
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\TaxApp\Persistence\TaxAppEntityManagerInterface $taxAppEntityManager
-     * @param \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         TaxAppEntityManagerInterface $taxAppEntityManager,
         TaxAppToStoreFacadeInterface $storeFacade
@@ -64,11 +60,6 @@ class ConfigDeleter implements ConfigDeleterInterface
         }
     }
 
-    /**
-     * @param \Exception $e
-     *
-     * @return void
-     */
     protected function logException(Exception $e): void
     {
         $this->getLogger()->error(sprintf(static::LOG_MESSAGE_CONFIG_DELETION_FAILED, $e->getMessage()), ['exception' => $e]);

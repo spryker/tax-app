@@ -14,11 +14,6 @@ use Spryker\Zed\TaxAppExtension\Dependency\Plugin\CalculableObjectTaxAppExpander
 
 class CalculableObjectTaxAppExpanderPlugin implements CalculableObjectTaxAppExpanderPluginInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     public function expand(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         $calculableObjectTransfer->setTaxMetadata(new SaleTaxMetadataTransfer());

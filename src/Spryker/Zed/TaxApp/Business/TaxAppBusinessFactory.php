@@ -54,41 +54,26 @@ use Spryker\Zed\TaxApp\TaxAppDependencyProvider;
  */
 class TaxAppBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Config\ConfigWriterInterface
-     */
     public function createConfigWriter(): ConfigWriterInterface
     {
         return new ConfigWriter($this->getEntityManager(), $this->getStoreFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Config\ConfigDeleterInterface
-     */
     public function createConfigDeleter(): ConfigDeleterInterface
     {
         return new ConfigDeleter($this->getEntityManager(), $this->getStoreFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Config\ConfigReaderInterface
-     */
     public function createConfigReader(): ConfigReaderInterface
     {
         return new ConfigReader($this->getRepository(), $this->getStoreFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Writer\TaxAppStoreRelationWriterInterface
-     */
     public function createTaxAppStoreRelationWriter(): TaxAppStoreRelationWriterInterface
     {
         return new TaxAppStoreRelationWriter($this->getRepository(), $this->createConfigWriter());
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToStoreFacadeInterface
-     */
     public function getStoreFacade(): TaxAppToStoreFacadeInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::FACADE_STORE);
@@ -110,9 +95,6 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(TaxAppDependencyProvider::PLUGINS_ORDER_TAX_APP_EXPANDER);
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Calculator\CalculatorInterface
-     */
     public function createCalculator(): CalculatorInterface
     {
         return new Calculator(
@@ -124,9 +106,6 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Calculator\FallbackCalculatorInterface
-     */
     public function createFallbackQuoteCalculator(): FallbackCalculatorInterface
     {
         return new FallbackCalculator(
@@ -134,9 +113,6 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Calculator\FallbackCalculatorInterface
-     */
     public function createFallbackOrderCalculator(): FallbackCalculatorInterface
     {
         return new FallbackCalculator(
@@ -144,9 +120,6 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Calculator\TaxAppCalculatorInterface
-     */
     public function createTaxAppCalculator(): TaxAppCalculatorInterface
     {
         return new TaxAppCalculator(
@@ -158,9 +131,6 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\AccessTokenProvider\AccessTokenProviderInterface
-     */
     public function createAccessTokenProvider(): AccessTokenProviderInterface
     {
         return new AccessTokenProvider(
@@ -169,9 +139,6 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Sender\PaymentSubmitTaxInvoiceSenderInterface
-     */
     public function createPaymentSubmitTaxInvoiceSender(): PaymentSubmitTaxInvoiceSenderInterface
     {
         return new PaymentSubmitTaxInvoiceSender(
@@ -183,9 +150,6 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Order\RefundProcessorInterface
-     */
     public function createRefundProcessor(): RefundProcessorInterface
     {
         return new RefundProcessor(
@@ -199,25 +163,16 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToMessageBrokerFacadeInterface
-     */
     public function getMessageBrokerFacade(): TaxAppToMessageBrokerFacadeInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::FACADE_MESSAGE_BROKER);
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToSalesFacadeInterface
-     */
     public function getSalesFacade(): TaxAppToSalesFacadeInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::FACADE_SALES);
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Mapper\TaxAppMapperInterface
-     */
     public function createTaxAppMapper(): TaxAppMapperInterface
     {
         return new TaxAppMapper(
@@ -228,25 +183,16 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Mapper\Addresses\AddressMapperInterface
-     */
     public function createAddressMapper(): AddressMapperInterface
     {
         return new AddressMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Mapper\Prices\ItemExpensePriceRetrieverInterface
-     */
     public function createItemExpensePriceRetriever(): ItemExpensePriceRetrieverInterface
     {
         return new ItemExpensePriceRetriever();
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Validator\TaxIdValidatorInterface
-     */
     public function createTaxIdValidator(): TaxIdValidatorInterface
     {
         return new TaxIdValidator(
@@ -258,25 +204,16 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\TaxApp\TaxAppClientInterface
-     */
     public function getTaxAppClient(): TaxAppClientInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::CLIENT_TAX_APP);
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToOauthClientFacadeInterface
-     */
     public function getOauthClientFacade(): TaxAppToOauthClientFacadeInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::FACADE_OAUTH_CLIENT);
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Business\Aggregator\PriceAggregatorInterface
-     */
     public function createPriceAggregator(): PriceAggregatorInterface
     {
         return new PriceAggregator();
@@ -298,17 +235,11 @@ class TaxAppBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(TaxAppDependencyProvider::PLUGINS_FALLBACK_ORDER_CALCULATION);
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToKernelAppFacadeInterface
-     */
     public function getKernelAppFacade(): TaxAppToKernelAppFacadeInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::FACADE_KERNEL_APP);
     }
 
-    /**
-     * @return \Spryker\Shared\TaxApp\Dependency\Service\TaxAppToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): TaxAppToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::SERVICE_UTIL_ENCODING);

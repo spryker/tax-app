@@ -11,18 +11,8 @@ use Generated\Shared\Transfer\StoreTransfer;
 
 interface TaxAppToStoreFacadeInterface
 {
-    /**
-     * @param string $storeReference
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getStoreByStoreReference(string $storeReference): StoreTransfer;
 
-    /**
-     * @param string $storeName
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getStoreByName(string $storeName): StoreTransfer;
 
     /**
@@ -30,10 +20,5 @@ interface TaxAppToStoreFacadeInterface
      */
     public function getAllStores(): array;
 
-    /**
-     * @param bool $fallbackToDefault
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(bool $fallbackToDefault = false): StoreTransfer;
 }

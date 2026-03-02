@@ -13,18 +13,10 @@ use Spryker\Client\TaxApp\Dependency\Client\TaxAppToZedRequestClientInterface;
 
 class TaxAppStub implements TaxAppStubInterface
 {
-    /**
-     * @param \Spryker\Client\TaxApp\Dependency\Client\TaxAppToZedRequestClientInterface $zedRequestClient
-     */
     public function __construct(protected TaxAppToZedRequestClientInterface $zedRequestClient)
     {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppValidationRequestTransfer $taxAppValidationRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppValidationResponseTransfer
-     */
     public function validateTaxId(TaxAppValidationRequestTransfer $taxAppValidationRequestTransfer): TaxAppValidationResponseTransfer
     {
         /** @var \Generated\Shared\Transfer\TaxAppValidationResponseTransfer $taxAppValidationResponseTransfer */

@@ -13,11 +13,6 @@ use Generated\Shared\Transfer\TaxIdValidationHistoryTransfer;
 
 interface TaxAppEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxIdValidationHistoryTransfer $taxIdValidationHistoryTransfer
-     *
-     * @return void
-     */
     public function saveTaxIdValidationHistory(TaxIdValidationHistoryTransfer $taxIdValidationHistoryTransfer): void;
 
     /**
@@ -28,10 +23,5 @@ interface TaxAppEntityManagerInterface
      */
     public function saveTaxAppConfig(TaxAppConfigTransfer $taxAppConfigTransfer, array $storeTransfers): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
-     *
-     * @return void
-     */
     public function deleteTaxAppConfig(TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer): void;
 }

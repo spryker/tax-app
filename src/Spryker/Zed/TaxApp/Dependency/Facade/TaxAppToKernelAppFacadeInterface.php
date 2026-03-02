@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\AcpHttpResponseTransfer;
 
 interface TaxAppToKernelAppFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\AcpHttpRequestTransfer $acpHttpRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\AcpHttpResponseTransfer
-     */
     public function makeRequest(AcpHttpRequestTransfer $acpHttpRequestTransfer): AcpHttpResponseTransfer;
 }

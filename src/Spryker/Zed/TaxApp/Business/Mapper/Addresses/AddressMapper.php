@@ -15,12 +15,6 @@ use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 
 class AddressMapper implements AddressMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     * @param \Generated\Shared\Transfer\TaxAppAddressTransfer $taxAppAddressTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppAddressTransfer
-     */
     public function mapAddressTransferToTaxAppAddressTransfer(
         AddressTransfer $addressTransfer,
         TaxAppAddressTransfer $taxAppAddressTransfer
@@ -28,12 +22,6 @@ class AddressMapper implements AddressMapperInterface
         return $this->mapAddressAndMerchantProfileAddressTransferToTaxAppAddressTransfer($addressTransfer, $taxAppAddressTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockAddressTransfer $addressTransfer
-     * @param \Generated\Shared\Transfer\TaxAppAddressTransfer $taxAppAddressTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppAddressTransfer
-     */
     public function mapStockAddressTransferToTaxAppAddressTransfer(
         StockAddressTransfer $addressTransfer,
         TaxAppAddressTransfer $taxAppAddressTransfer
@@ -50,12 +38,6 @@ class AddressMapper implements AddressMapperInterface
         return $taxAppAddressTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantProfileAddressTransfer $addressTransfer
-     * @param \Generated\Shared\Transfer\TaxAppAddressTransfer $taxAppAddressTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppAddressTransfer
-     */
     public function mapMerchantProfileAddressTransferToTaxAppAddressTransfer(
         MerchantProfileAddressTransfer $addressTransfer,
         TaxAppAddressTransfer $taxAppAddressTransfer
@@ -63,12 +45,6 @@ class AddressMapper implements AddressMapperInterface
         return $this->mapAddressAndMerchantProfileAddressTransferToTaxAppAddressTransfer($addressTransfer, $taxAppAddressTransfer);
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $addressTransfer
-     * @param \Generated\Shared\Transfer\TaxAppAddressTransfer $taxAppAddressTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppAddressTransfer
-     */
     protected function mapAddressAndMerchantProfileAddressTransferToTaxAppAddressTransfer(
         AbstractTransfer $addressTransfer,
         TaxAppAddressTransfer $taxAppAddressTransfer

@@ -26,9 +26,6 @@ class TaxAppFacadeStoreRelationRefreshTest extends Unit
 {
     protected TaxAppBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testRefreshAllTaxAppConfigStoreRelationsIfNewStoreWasAddedAppendsThisStoreIntoAssetStoreRelations(): void
     {
         if (!$this->tester->isDynamicStoreEnabled()) {
@@ -51,9 +48,6 @@ class TaxAppFacadeStoreRelationRefreshTest extends Unit
         $this->tester->assertTaxAppConfigStoreRelationExists($taxApConfigTransfer->getApplicationId(), $storeTransfer->getIdStore());
     }
 
-    /**
-     * @return void
-     */
     public function testRefreshAllTaxAppConfigStoreRelationsDoesNothingToExistingRelationsIfNoStoreWasAdded(): void
     {
         if (!$this->tester->isDynamicStoreEnabled()) {

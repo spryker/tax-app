@@ -67,11 +67,6 @@ class PaymentSubmitTaxInvoiceSender implements PaymentSubmitTaxInvoiceSenderInte
         $this->orderTaxAppExpanderPlugins = $orderTaxAppExpanderPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return void
-     */
     public function sendSubmitPaymentTaxInvoiceMessage(OrderTransfer $orderTransfer): void
     {
         $idSalesOrder = $orderTransfer->getIdSalesOrderOrFail();
@@ -95,12 +90,6 @@ class PaymentSubmitTaxInvoiceSender implements PaymentSubmitTaxInvoiceSenderInte
         $this->messageBrokerFacade->sendMessage($submitPaymentTaxInvoiceTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SubmitPaymentTaxInvoiceTransfer $submitPaymentTaxInvoiceTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return void
-     */
     protected function setMessageAttributesTransfer(
         SubmitPaymentTaxInvoiceTransfer $submitPaymentTaxInvoiceTransfer,
         OrderTransfer $orderTransfer
@@ -113,11 +102,6 @@ class PaymentSubmitTaxInvoiceSender implements PaymentSubmitTaxInvoiceSenderInte
         $submitPaymentTaxInvoiceTransfer->setMessageAttributes($messageAttributesTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     protected function executeOrderTaxAppExpanderPlugins(OrderTransfer $orderTransfer): OrderTransfer
     {
         foreach ($this->orderTaxAppExpanderPlugins as $orderTaxAppExpanderPlugin) {

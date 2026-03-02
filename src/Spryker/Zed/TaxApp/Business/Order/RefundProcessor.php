@@ -130,11 +130,6 @@ class RefundProcessor implements RefundProcessorInterface
         $this->taxAppClient->requestTaxRefund($taxRefundRequestTransfer, $taxAppConfigTransfer, $storeTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxRefundRequestTransfer $taxRefundRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxRefundRequestTransfer
-     */
     protected function expandTaxRefundRequestWithAccessToken(
         TaxRefundRequestTransfer $taxRefundRequestTransfer
     ): TaxRefundRequestTransfer {
@@ -143,11 +138,6 @@ class RefundProcessor implements RefundProcessorInterface
         return $taxRefundRequestTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     protected function executeOrderTaxAppExpanderPlugins(OrderTransfer $orderTransfer): OrderTransfer
     {
         foreach ($this->orderTaxAppExpanderPlugins as $orderTaxAppExpanderPlugin) {

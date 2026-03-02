@@ -24,21 +24,11 @@ class TaxAppToStoreFacadeBridge implements TaxAppToStoreFacadeInterface
         $this->storeFacade = $storeFacade;
     }
 
-    /**
-     * @param string $storeReference
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getStoreByStoreReference(string $storeReference): StoreTransfer
     {
         return $this->storeFacade->getStoreByStoreReference($storeReference);
     }
 
-    /**
-     * @param string $storeName
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getStoreByName(string $storeName): StoreTransfer
     {
         return $this->storeFacade->getStoreByName($storeName);
@@ -52,11 +42,6 @@ class TaxAppToStoreFacadeBridge implements TaxAppToStoreFacadeInterface
         return $this->storeFacade->getAllStores();
     }
 
-    /**
-     * @param bool $fallbackToDefault
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(bool $fallbackToDefault = false): StoreTransfer
     {
         return $this->storeFacade->getCurrentStore();

@@ -76,12 +76,6 @@ class TaxAppBusinessTester extends Actor
 {
     use _generated\TaxAppBusinessTesterActions;
 
-    /**
-     * @param \Generated\Shared\Transfer\AcpHttpResponseTransfer $acpHttpResponseTransfer
-     * @param \PHPUnit\Framework\Constraint\Callback|null $with
-     *
-     * @return void
-     */
     public function mockKernelAppFacade(AcpHttpResponseTransfer $acpHttpResponseTransfer, ?Callback $with = null): void
     {
         $mockKernelAppFacade = Stub::makeEmpty(KernelAppFacadeInterface::class);
@@ -101,13 +95,6 @@ class TaxAppBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param string $taxId
-     * @param string $countryCode
-     * @param string $responseData
-     *
-     * @return void
-     */
     public function assertTaxIdValidationHistoryEntryDoesNotExist(string $taxId, string $countryCode, string $responseData): void
     {
         $taxIdValidationHistoryEntity = $this->getTaxIdValidationHistoryQuery()
@@ -119,9 +106,6 @@ class TaxAppBusinessTester extends Actor
         $this->assertSame($responseData, $taxIdValidationHistoryEntity->getResponseData());
     }
 
-    /**
-     * @return void
-     */
     public function setQuoteTaxMetadataExpanderPlugins(): void
     {
         $this->setDependency(
@@ -133,14 +117,6 @@ class TaxAppBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param string $priceMode
-     * @param bool $withBillingAddress
-     * @param array $billingAddressSeed
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     public function createCalculableObjectTransfer(
         StoreTransfer $storeTransfer,
         string $priceMode = 'NET_MODE',
@@ -203,11 +179,6 @@ class TaxAppBusinessTester extends Actor
         return $calculableObjectTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     public function createCalculableObjectTransferWithoutShipment(StoreTransfer $storeTransfer): CalculableObjectTransfer
     {
         $merchantTransfer1 = $this->haveMerchant();
@@ -238,25 +209,16 @@ class TaxAppBusinessTester extends Actor
         return $calculableObjectTransfer;
     }
 
-    /**
-     * @return void
-     */
     public function ensureTaxIdValidationHistoryTableIsEmpty(): void
     {
         $this->ensureDatabaseTableIsEmpty($this->getTaxIdValidationHistoryQuery());
     }
 
-    /**
-     * @return void
-     */
     public function ensureTaxAppConfigTableIsEmpty(): void
     {
         $this->ensureDatabaseTableIsEmpty($this->getTaxAppConfigQuery());
     }
 
-    /**
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery
-     */
     protected function getTaxAppConfigQuery(): SpyTaxAppConfigQuery
     {
         return SpyTaxAppConfigQuery::create();
@@ -270,12 +232,6 @@ class TaxAppBusinessTester extends Actor
         return SpyTaxIdValidationHistoryQuery::create();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     * @param \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfig|null $taxAppConfigEntity
-     *
-     * @return void
-     */
     public function assertTaxAppConfigStoredProperly(
         TaxAppConfigTransfer $taxAppConfigTransfer,
         ?SpyTaxAppConfig $taxAppConfigEntity = null
@@ -307,9 +263,6 @@ class TaxAppBusinessTester extends Actor
             ->findOne();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function createStoreWithStoreReference(): StoreTransfer
     {
         return (new StoreTransfer())
@@ -318,9 +271,6 @@ class TaxAppBusinessTester extends Actor
             ->setStoreReference('test_store_reference');
     }
 
-    /**
-     * @return void
-     */
     protected function clearPersistenceManagerCache(): void
     {
         $stateCacheProperty = new ReflectionProperty(PersistenceManager::class, 'stateCache');
@@ -331,12 +281,6 @@ class TaxAppBusinessTester extends Actor
         $processCacheProperty->setValue([]);
     }
 
-    /**
-     * @param array $activeProcesses
-     * @param string|null $xmlFolder
-     *
-     * @return void
-     */
     public function configureTestStateMachine(array $activeProcesses, ?string $xmlFolder = null): void
     {
         $this->clearPersistenceManagerCache();
@@ -349,11 +293,6 @@ class TaxAppBusinessTester extends Actor
         $this->setConfig(OmsConstants::ACTIVE_PROCESSES, $activeProcesses);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     public function haveCalculableObjectTransferWithMerchantStockAddress(StoreTransfer $storeTransfer): CalculableObjectTransfer
     {
         $merchantTransfer1 = $this->haveMerchant();
@@ -429,9 +368,6 @@ class TaxAppBusinessTester extends Actor
         return $calculableObjectTransfer;
     }
 
-    /**
-     * @return void
-     */
     public function mockOauthClient(): void
     {
         $accessTokenResponseTransfer = (new AccessTokenResponseTransfer())
@@ -446,11 +382,6 @@ class TaxAppBusinessTester extends Actor
         $this->mockFactoryMethod('getOauthClientFacade', $oauthClientFacadeBridgeMock);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxCalculationResponseTransfer $taxCalculationResponseTransfer
-     *
-     * @return void
-     */
     public function mockTaxAppClientWithTaxCalculationResponse(TaxCalculationResponseTransfer $taxCalculationResponseTransfer): void
     {
         $taxAppClientMock = Stub::makeEmpty(TaxAppClient::class);
@@ -460,11 +391,6 @@ class TaxAppBusinessTester extends Actor
         $this->mockOauthClient();
     }
 
-    /**
-     * @param array $calculatorPlugins
-     *
-     * @return \Spryker\Zed\Calculation\Business\CalculationFacade
-     */
     public function createCalculationFacade(array $calculatorPlugins): CalculationFacade
     {
         $calculationFacade = new CalculationFacade();
@@ -490,12 +416,6 @@ class TaxAppBusinessTester extends Actor
         return $calculationFacade;
     }
 
-    /**
-     * @param string $stateMachineProcessName
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     public function createOrderByStateMachineProcessName(string $stateMachineProcessName, StoreTransfer $storeTransfer): OrderTransfer
     {
         $quoteTransfer = $this->buildFakeQuote(
@@ -515,12 +435,6 @@ class TaxAppBusinessTester extends Actor
             ->setBillingAddress($quoteTransfer->getBillingAddress());
     }
 
-    /**
-     * @param string $applicationId
-     * @param int $idStore
-     *
-     * @return void
-     */
     public function assertTaxAppConfigStoreRelationExists(string $applicationId, int $idStore): void
     {
         $this->assertTrue(
@@ -528,12 +442,6 @@ class TaxAppBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param string $applicationId
-     * @param int $idStore
-     *
-     * @return void
-     */
     public function assertTaxAppConfigStoreRelationDoesNotExist(string $applicationId, int $idStore): void
     {
         $this->assertFalse(
@@ -541,12 +449,6 @@ class TaxAppBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function buildFakeQuote(CustomerTransfer $customerTransfer, StoreTransfer $storeTransfer): QuoteTransfer
     {
         $shipmentBuilder = (new ShipmentBuilder())

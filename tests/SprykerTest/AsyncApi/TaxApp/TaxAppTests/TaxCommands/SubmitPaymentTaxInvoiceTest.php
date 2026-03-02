@@ -35,9 +35,6 @@ class SubmitPaymentTaxInvoiceTest extends Unit
      */
     protected AsyncApiTester $tester;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -45,9 +42,6 @@ class SubmitPaymentTaxInvoiceTest extends Unit
         $this->tester->ensureTaxAppConfigTableIsEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testSubmitPaymentTaxInvoiceWhenStoreReferenceIsProvidedThenMessageIsSent(): void
     {
         // Arrange

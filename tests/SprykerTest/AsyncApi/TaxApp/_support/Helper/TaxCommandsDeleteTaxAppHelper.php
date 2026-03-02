@@ -13,11 +13,6 @@ use Generated\Shared\Transfer\MessageAttributesTransfer;
 
 class TaxCommandsDeleteTaxAppHelper extends Module
 {
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\DeleteTaxAppTransfer
-     */
     public function haveDeleteTaxAppMessage(array $seed = []): DeleteTaxAppTransfer
     {
         $deleteTaxAppTransfer = new DeleteTaxAppTransfer();

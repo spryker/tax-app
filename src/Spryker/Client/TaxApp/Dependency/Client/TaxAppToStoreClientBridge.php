@@ -24,11 +24,6 @@ class TaxAppToStoreClientBridge implements TaxAppToStoreClientInterface
         $this->storeClient = $storeClient;
     }
 
-    /**
-     * @param string $storeName
-     *
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getStoreByName(string $storeName): StoreTransfer
     {
         return $this->storeClient->getStoreByName($storeName);

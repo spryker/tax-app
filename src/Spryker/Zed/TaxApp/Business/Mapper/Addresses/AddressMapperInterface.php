@@ -14,34 +14,16 @@ use Generated\Shared\Transfer\TaxAppAddressTransfer;
 
 interface AddressMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     * @param \Generated\Shared\Transfer\TaxAppAddressTransfer $taxAppAddressTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppAddressTransfer
-     */
     public function mapAddressTransferToTaxAppAddressTransfer(
         AddressTransfer $addressTransfer,
         TaxAppAddressTransfer $taxAppAddressTransfer
     ): TaxAppAddressTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantProfileAddressTransfer $addressTransfer
-     * @param \Generated\Shared\Transfer\TaxAppAddressTransfer $taxAppAddressTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppAddressTransfer
-     */
     public function mapMerchantProfileAddressTransferToTaxAppAddressTransfer(
         MerchantProfileAddressTransfer $addressTransfer,
         TaxAppAddressTransfer $taxAppAddressTransfer
     ): TaxAppAddressTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\StockAddressTransfer $addressTransfer
-     * @param \Generated\Shared\Transfer\TaxAppAddressTransfer $taxAppAddressTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppAddressTransfer
-     */
     public function mapStockAddressTransferToTaxAppAddressTransfer(
         StockAddressTransfer $addressTransfer,
         TaxAppAddressTransfer $taxAppAddressTransfer

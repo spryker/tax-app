@@ -25,10 +25,6 @@ class AccessTokenProvider implements AccessTokenProviderInterface
      */
     protected TaxAppConfig $taxAppConfig;
 
-    /**
-     * @param \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToOauthClientFacadeInterface $oauthClientFacade
-     * @param \Spryker\Zed\TaxApp\TaxAppConfig $taxAppConfig
-     */
     public function __construct(
         TaxAppToOauthClientFacadeInterface $oauthClientFacade,
         TaxAppConfig $taxAppConfig
@@ -37,9 +33,6 @@ class AccessTokenProvider implements AccessTokenProviderInterface
         $this->taxAppConfig = $taxAppConfig;
     }
 
-    /**
-     * @return string
-     */
     public function getAccessToken(): string
     {
         $accessTokenRequestOptionsTransfer = (new AccessTokenRequestOptionsTransfer())

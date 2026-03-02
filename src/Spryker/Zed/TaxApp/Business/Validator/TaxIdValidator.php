@@ -42,13 +42,6 @@ class TaxIdValidator implements TaxIdValidatorInterface
      */
     protected const GLOSSARY_KEY_TAX_VALIDATOR_IS_UNAVAILABLE = 'tax_app.vertex.tax-validator-unavailable';
 
-    /**
-     * @param \Spryker\Zed\TaxApp\Business\Config\ConfigReaderInterface $configReader
-     * @param \Spryker\Zed\TaxApp\Business\AccessTokenProvider\AccessTokenProviderInterface $accessTokenProvider
-     * @param \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToKernelAppFacadeInterface $kernelAppFacade
-     * @param \Spryker\Zed\TaxApp\Persistence\TaxAppEntityManagerInterface $entityManager
-     * @param \Spryker\Shared\TaxApp\Dependency\Service\TaxAppToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(
         protected ConfigReaderInterface $configReader,
         protected AccessTokenProviderInterface $accessTokenProvider,
@@ -58,11 +51,6 @@ class TaxIdValidator implements TaxIdValidatorInterface
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppValidationRequestTransfer $taxAppValidationRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppValidationResponseTransfer
-     */
     public function validate(TaxAppValidationRequestTransfer $taxAppValidationRequestTransfer): TaxAppValidationResponseTransfer
     {
         $taxAppValidationRequestTransfer->requireTaxId();
@@ -114,13 +102,6 @@ class TaxIdValidator implements TaxIdValidatorInterface
         return $taxAppValidationResponseTransfer;
     }
 
-    /**
-     * @param bool $isValid
-     * @param string $message
-     * @param string $messageKey
-     *
-     * @return \Generated\Shared\Transfer\TaxAppValidationResponseTransfer
-     */
     protected function createTaxAppValidationResponseTransfer(
         bool $isValid,
         string $message,

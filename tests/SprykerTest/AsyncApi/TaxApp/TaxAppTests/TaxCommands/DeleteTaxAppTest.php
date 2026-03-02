@@ -29,9 +29,6 @@ class DeleteTaxAppTest extends Unit
      */
     protected AsyncApiTester $tester;
 
-    /**
-     * @return void
-     */
     public function testWhenDeleteTaxAppMessageIsReceivedThenTaxAppConfigurationIsDeleted(): void
     {
         // Arrange
@@ -48,9 +45,6 @@ class DeleteTaxAppTest extends Unit
         $this->tester->assertTaxAppWithVendorCodeDoesNotExist($taxAppConfigTransfer->getVendorCode());
     }
 
-    /**
-     * @return void
-     */
     public function testWhenDeleteTaxAppMessageIsReceivedWithoutStoreReferenceThenTaxAppConfigurationIsDeleted(): void
     {
         // Arrange

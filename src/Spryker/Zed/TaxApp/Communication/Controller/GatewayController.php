@@ -18,11 +18,6 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
  */
 class GatewayController extends AbstractGatewayController
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppValidationRequestTransfer $taxAppValidationRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppValidationResponseTransfer
-     */
     public function validateTaxIdAction(TaxAppValidationRequestTransfer $taxAppValidationRequestTransfer): TaxAppValidationResponseTransfer
     {
         return $this->getFacade()

@@ -25,11 +25,6 @@ class TaxAppToKernelAppFacadeBridge implements TaxAppToKernelAppFacadeInterface
         $this->kernelAppFacade = $kernelAppFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AcpHttpRequestTransfer $acpHttpRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\AcpHttpResponseTransfer
-     */
     public function makeRequest(AcpHttpRequestTransfer $acpHttpRequestTransfer): AcpHttpResponseTransfer
     {
         return $this->kernelAppFacade->makeRequest($acpHttpRequestTransfer);

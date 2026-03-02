@@ -39,11 +39,6 @@ class TaxAppClientTester extends Actor
 {
     use _generated\TaxAppClientTesterActions;
 
-    /**
-     * @param \GuzzleHttp\Psr7\Response $response
-     *
-     * @return void
-     */
     public function mockHttpClient(Response $response): void
     {
         $httpClientMock = Stub::makeEmpty(TaxAppToHttpClientAdapterInterface::class, [
@@ -53,11 +48,6 @@ class TaxAppClientTester extends Actor
         $this->mockFactoryMethod('getHttpClient', $httpClientMock);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return void
-     */
     public function mockStoreClient(StoreTransfer $storeTransfer): void
     {
         $storeClientMock = Stub::makeEmpty(TaxAppToStoreClientInterface::class, [
@@ -79,9 +69,6 @@ class TaxAppClientTester extends Actor
         $this->mockFactoryMethod('getConfig', $configMock);
     }
 
-    /**
-     * @return \GuzzleHttp\Psr7\Response
-     */
     public function haveValidResponse(): Response
     {
         $handler = fopen('data://text/plain,' . json_encode(['responseData']), 'r');
@@ -90,27 +77,16 @@ class TaxAppClientTester extends Actor
         return new Response(200, [], $stream);
     }
 
-    /**
-     * @return \GuzzleHttp\Psr7\Response
-     */
     public function haveEmptyResponse(): Response
     {
         return new Response(200);
     }
 
-    /**
-     * @return \GuzzleHttp\Psr7\Response
-     */
     public function haveErrorResponse(): Response
     {
         return new Response(422);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxCalculationResponseTransfer $responseTransfer
-     *
-     * @return void
-     */
     public function assertTaxCalculationResponseIsNotEmpty(TaxCalculationResponseTransfer $responseTransfer): void
     {
         $this->assertNotNull($responseTransfer);

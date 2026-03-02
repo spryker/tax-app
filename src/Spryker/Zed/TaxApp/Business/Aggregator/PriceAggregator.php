@@ -19,12 +19,6 @@ use Spryker\Zed\TaxApp\Business\Mapper\TaxAppMapper;
 
 class PriceAggregator implements PriceAggregatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     public function calculatePriceAggregation(
         TaxAppSaleTransfer $taxAppSaleTransfer,
         CalculableObjectTransfer $calculableObjectTransfer
@@ -35,12 +29,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $calculableObjectTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     protected function calculateTaxAmountFullAggregationAndPriceToPayAggregationForItems(
         TaxAppSaleTransfer $taxAppSaleTransfer,
         CalculableObjectTransfer $calculableObjectTransfer
@@ -61,12 +49,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $calculableObjectTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $quoteItem
-     * @param \Generated\Shared\Transfer\TaxAppItemTransfer $taxAppItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
     protected function calculateTaxAmountFullAggregationForItem(ItemTransfer $quoteItem, TaxAppItemTransfer $taxAppItemTransfer): ItemTransfer
     {
         $saleItemQuantity = $this->getItemQuantity($taxAppItemTransfer);
@@ -87,11 +69,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $quoteItem;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppItemTransfer $taxAppItemTransfer
-     *
-     * @return int
-     */
     protected function getItemQuantity(TaxAppItemTransfer $taxAppItemTransfer): int
     {
         if (!$taxAppItemTransfer->getShippingWarehouses()->count()) {
@@ -106,12 +83,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $quantity;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param string $priceMode
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
     protected function calculatePriceToPayAggregationForItem(ItemTransfer $itemTransfer, string $priceMode): ItemTransfer
     {
         $itemTransfer->requireSumSubtotalAggregation()
@@ -153,9 +124,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $indexedItems;
     }
 
-    /**
-     * @inheritDoc
-     */
     protected function calculatePriceToPayAggregationForExpenses(
         TaxAppSaleTransfer $taxAppSaleTransfer,
         CalculableObjectTransfer $calculableObjectTransfer
@@ -175,11 +143,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $calculableObjectTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     protected function preDefineTaxAmount(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         foreach ($calculableObjectTransfer->getExpenses() as $expenseTransfer) {
@@ -194,12 +157,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $calculableObjectTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ExpenseTransfer $expenseTransfer
-     * @param \Generated\Shared\Transfer\TaxAppShipmentTransfer $taxAppShipmentTransfer
-     *
-     * @return \Generated\Shared\Transfer\ExpenseTransfer
-     */
     protected function calculateTaxAmountForExpense(ExpenseTransfer $expenseTransfer, TaxAppShipmentTransfer $taxAppShipmentTransfer): ExpenseTransfer
     {
         if ($taxAppShipmentTransfer->getRefundedTaxTotal()) {
@@ -214,12 +171,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $expenseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ExpenseTransfer $expenseTransfer
-     * @param string $priceMode
-     *
-     * @return \Generated\Shared\Transfer\ExpenseTransfer
-     */
     protected function calculatePriceToPayAggregationForExpense(ExpenseTransfer $expenseTransfer, string $priceMode): ExpenseTransfer
     {
         $expenseTransfer->setUnitPriceToPayAggregation(
@@ -262,14 +213,6 @@ class PriceAggregator implements PriceAggregatorInterface
         return $indexedExpenses;
     }
 
-    /**
-     * @param int $price
-     * @param string $priceMode
-     * @param int $discountAmount
-     * @param int $taxAmount
-     *
-     * @return int
-     */
     protected function calculatePriceToPayAggregation(int $price, string $priceMode, int $discountAmount = 0, int $taxAmount = 0): int
     {
         if ($priceMode === ItemExpensePriceRetriever::PRICE_MODE_NET) {

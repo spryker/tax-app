@@ -14,11 +14,6 @@ use Spryker\Zed\TaxAppExtension\Dependency\Plugin\OrderTaxAppExpanderPluginInter
 
 class OrderTaxAppExpanderPlugin implements OrderTaxAppExpanderPluginInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     public function expand(OrderTransfer $orderTransfer): OrderTransfer
     {
         $orderTransfer->setTaxMetadata(new SaleTaxMetadataTransfer());

@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer;
 
 interface ConfigDeleterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
-     *
-     * @return void
-     */
     public function delete(TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer): void;
 }

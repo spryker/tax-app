@@ -9,8 +9,5 @@ namespace Spryker\Zed\TaxApp\Business\AccessTokenProvider;
 
 interface AccessTokenProviderInterface
 {
-    /**
-     * @return string
-     */
     public function getAccessToken(): string;
 }

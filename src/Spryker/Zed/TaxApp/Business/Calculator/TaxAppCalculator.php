@@ -78,12 +78,6 @@ class TaxAppCalculator implements TaxAppCalculatorInterface
         $this->priceAggregator = $priceAggregator;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     *
-     * @return void
-     */
     public function recalculate(CalculableObjectTransfer $calculableObjectTransfer, TaxAppConfigTransfer $taxAppConfigTransfer): void
     {
         $calculableObjectTransfer = $this->executeCalculableObjectTaxAppExpanderPlugins($calculableObjectTransfer);
@@ -127,13 +121,6 @@ class TaxAppCalculator implements TaxAppCalculatorInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxCalculationResponseTransfer
-     */
     protected function getTaxCalculationResponse(
         TaxAppSaleTransfer $taxAppSaleTransfer,
         TaxAppConfigTransfer $taxAppConfigTransfer,
@@ -146,22 +133,11 @@ class TaxAppCalculator implements TaxAppCalculatorInterface
         return $this->taxAppClient->requestTaxQuotation($taxCalculationRequestTransfer, $taxAppConfigTransfer, $storeTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     *
-     * @return string
-     */
     protected function getTaxAppSaleHash(TaxAppSaleTransfer $taxAppSaleTransfer): string
     {
         return md5(json_encode($taxAppSaleTransfer->toArray()) ?: '');
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxCalculationResponseTransfer|null
-     */
     protected function getCachedTaxAppResponseTransfer(
         CalculableObjectTransfer $calculableObjectTransfer,
         TaxAppSaleTransfer $taxAppSaleTransfer
@@ -180,11 +156,6 @@ class TaxAppCalculator implements TaxAppCalculatorInterface
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppSaleTransfer $taxAppSaleTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppSaleTransfer
-     */
     protected function resetTaxAppSaleTaxTotals(TaxAppSaleTransfer $taxAppSaleTransfer): TaxAppSaleTransfer
     {
         $taxAppSaleTransfer->setTaxTotal(0);
@@ -198,11 +169,6 @@ class TaxAppCalculator implements TaxAppCalculatorInterface
         return $taxAppSaleTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CalculableObjectTransfer $calculableObjectTransfer
-     *
-     * @return \Generated\Shared\Transfer\CalculableObjectTransfer
-     */
     protected function executeCalculableObjectTaxAppExpanderPlugins(CalculableObjectTransfer $calculableObjectTransfer): CalculableObjectTransfer
     {
         foreach ($this->calculableObjectTaxAppExpanderPlugins as $calculableObjectTaxAppExpanderPlugin) {

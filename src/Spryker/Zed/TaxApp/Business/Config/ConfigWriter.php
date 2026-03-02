@@ -30,10 +30,6 @@ class ConfigWriter implements ConfigWriterInterface
      */
     protected TaxAppToStoreFacadeInterface $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\TaxApp\Persistence\TaxAppEntityManagerInterface $taxAppEntityManager
-     * @param \Spryker\Zed\TaxApp\Dependency\Facade\TaxAppToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         TaxAppEntityManagerInterface $taxAppEntityManager,
         TaxAppToStoreFacadeInterface $storeFacade

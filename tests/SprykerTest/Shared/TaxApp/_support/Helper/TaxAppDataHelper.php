@@ -50,41 +50,21 @@ class TaxAppDataHelper extends Module
     use DependencyProviderHelperTrait;
     use TableRelationsCleanupHelperTrait;
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigTransfer
-     */
     public function createTaxAppConfigTransfer(array $seed = []): TaxAppConfigTransfer
     {
         return (new TaxAppConfigBuilder())->seed($seed)->withApiUrls()->build();
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\TaxAppValidationRequestTransfer
-     */
     public function createTaxAppValidationRequestTransfer(array $seed = []): TaxAppValidationRequestTransfer
     {
         return (new TaxAppValidationRequestBuilder())->seed($seed)->build();
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer
-     */
     public function createTaxAppConfigCriteriaTransfer(array $seed = []): TaxAppConfigCriteriaTransfer
     {
         return (new TaxAppConfigCriteriaBuilder())->seed($seed)->build();
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer
-     */
     public function createTaxAppConfigCriteriaTransferWithTaxAppConfigConditionsTransfer(array $seed = []): TaxAppConfigCriteriaTransfer
     {
         $taxAppConfigCriteriaTransfer = $this->createTaxAppConfigCriteriaTransfer($seed);
@@ -93,21 +73,11 @@ class TaxAppDataHelper extends Module
         return $taxAppConfigCriteriaTransfer->setTaxAppConfigConditions($taxAppConfigConditionsTransfer);
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigConditionsTransfer
-     */
     public function createTaxAppConfigConditionsTransfer(array $seed = []): TaxAppConfigConditionsTransfer
     {
         return (new TaxAppConfigConditionsBuilder())->seed($seed)->build();
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigTransfer
-     */
     public function haveTaxAppConfig(array $seed = []): TaxAppConfigTransfer
     {
         $taxAppConfigTransfer = $this->createTaxAppConfigTransfer();
@@ -135,28 +105,16 @@ class TaxAppDataHelper extends Module
         return $taxAppConfigTransfer;
     }
 
-    /**
-     * @return void
-     */
     public function ensureTaxAppConfigTableIsEmpty(): void
     {
         $this->getTableRelationsCleanupHelper()->ensureDatabaseTableIsEmpty($this->getTaxAppConfigQuery());
     }
 
-    /**
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery
-     */
     protected function getTaxAppConfigQuery(): SpyTaxAppConfigQuery
     {
         return SpyTaxAppConfigQuery::create();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     * @param \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfig|null $taxAppConfigEntity
-     *
-     * @return void
-     */
     public function assertTaxAppConfigStoredProperly(
         TaxAppConfigTransfer $taxAppConfigTransfer,
         ?SpyTaxAppConfig $taxAppConfigEntity = null
@@ -176,11 +134,6 @@ class TaxAppDataHelper extends Module
         );
     }
 
-    /**
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfig|null
-     */
     public function findTaxAppConfigByIdStore(int $idStore): ?SpyTaxAppConfig
     {
         return $this->getTaxAppConfigQuery()
@@ -188,9 +141,6 @@ class TaxAppDataHelper extends Module
             ->findOne();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function createStoreTransferWithStoreReference(): StoreTransfer
     {
         return (new StoreTransfer())
@@ -199,13 +149,6 @@ class TaxAppDataHelper extends Module
             ->setStoreReference('test_store_reference');
     }
 
-    /**
-     * @param string $vendorCode
-     * @param int|null $idStore
-     * @param bool|null $isActive
-     *
-     * @return void
-     */
     public function assertTaxAppWithVendorCodeIsConfigured(string $vendorCode, ?int $idStore = null, ?bool $isActive = null): void
     {
         $taxAppConfigEntity = $this->findTaxAppConfigByVendorCode($vendorCode);
@@ -245,11 +188,6 @@ class TaxAppDataHelper extends Module
         $this->assertSame(count($allowedStores), $countAppConfigEntities, sprintf('Expected to find Tax App configurations with vendor code "%s" but it was not found.', $vendorCode));
     }
 
-    /**
-     * @param string $vendorCode
-     *
-     * @return void
-     */
     public function assertTaxAppWithVendorCodeDoesNotExist(string $vendorCode): void
     {
         $taxAppConfigEntity = $this->findTaxAppConfigByVendorCode($vendorCode);
@@ -257,11 +195,6 @@ class TaxAppDataHelper extends Module
         $this->assertNull($taxAppConfigEntity, sprintf('Expected not to find a Tax App configuration for the vendor with vendor code "%s" but it was found.', $vendorCode));
     }
 
-    /**
-     * @param string $vendorCode
-     *
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfig|null
-     */
     protected function findTaxAppConfigByVendorCode(string $vendorCode): ?SpyTaxAppConfig
     {
         return $this->getTaxAppConfigQuery()
@@ -269,11 +202,6 @@ class TaxAppDataHelper extends Module
             ->findOne();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer|null $storeTransfer
-     *
-     * @return void
-     */
     public function configureStoreFacadeGetStoreByStoreReferenceMethod(?StoreTransfer $storeTransfer = null): void
     {
         if (!$storeTransfer) {
@@ -290,12 +218,6 @@ class TaxAppDataHelper extends Module
         $this->getLocatorHelper()->addToLocatorCache('store-facade', $storeFacadeMock);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer1
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer2
-     *
-     * @return void
-     */
     public function configureStoreFacadeGetStoreByStoreReferenceWithMultipleStoresMethod(StoreTransfer $storeTransfer1, StoreTransfer $storeTransfer2): void
     {
         $storeFacadeMock = Stub::makeEmpty(StoreFacadeInterface::class, [
@@ -404,21 +326,11 @@ class TaxAppDataHelper extends Module
             ->build();
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\TaxCalculationRequestTransfer
-     */
     public function haveTaxCalculationRequestTransfer(array $seed = []): TaxCalculationRequestTransfer
     {
         return (new TaxCalculationRequestBuilder())->seed($seed)->withSale($this->haveTaxAppSaleTransfer()->toArray())->build();
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\TaxRefundRequestTransfer
-     */
     public function haveTaxRefundRequestTransfer(array $seed = []): TaxRefundRequestTransfer
     {
         return (new TaxRefundRequestBuilder())->seed($seed)->withSale($this->haveTaxAppSaleTransfer()->toArray())->build();
@@ -438,11 +350,6 @@ class TaxAppDataHelper extends Module
         return (new TaxCalculationResponseBuilder())->seed($seed)->withSale($saleTransfer->toArray())->build();
     }
 
-    /**
-     * @param \ArrayObject $itemTransfers
-     *
-     * @return int
-     */
     public function getTaxAppItemsTaxTotals(ArrayObject $itemTransfers): int
     {
         $itemsTaxTotal = 0;

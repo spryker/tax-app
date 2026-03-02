@@ -36,10 +36,6 @@ class TaxAppHeaderBuilder implements TaxAppHeaderBuilderInterface
      */
     protected TaxAppConfig $taxAppConfig;
 
-    /**
-     * @param \Spryker\Client\TaxApp\Dependency\Client\TaxAppToStoreClientInterface $storeClient
-     * @param \Spryker\Client\TaxApp\TaxAppConfig $taxAppConfig
-     */
     public function __construct(
         TaxAppToStoreClientInterface $storeClient,
         TaxAppConfig $taxAppConfig
@@ -83,11 +79,6 @@ class TaxAppHeaderBuilder implements TaxAppHeaderBuilderInterface
         return $headers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return string|null
-     */
     protected function findStoreReference(StoreTransfer $storeTransfer): ?string
     {
         if ($storeTransfer->getStoreReference()) {

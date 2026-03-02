@@ -48,11 +48,6 @@ class AsyncApiTester extends Actor
 {
     use _generated\AsyncApiTesterActions;
 
-    /**
-     * @param string $stateMachineProcessName
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     public function createOrderByStateMachineProcessName(string $stateMachineProcessName): OrderTransfer
     {
         $quoteTransfer = $this->buildFakeQuote(
@@ -72,9 +67,6 @@ class AsyncApiTester extends Actor
             ->setBillingAddress($quoteTransfer->getBillingAddress());
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     public function getOrderTransferForSubmitPaymentTaxInvoice(): OrderTransfer
     {
         $orderTransfer = $this->createOrderByStateMachineProcessName(SubmitPaymentTaxInvoiceTest::DEFAULT_OMS_PROCESS_NAME);
@@ -97,11 +89,6 @@ class AsyncApiTester extends Actor
         return $orderTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return void
-     */
     public function mockSalesFacadeFindOrderByIdSalesOrderMethod(OrderTransfer $orderTransfer): void
     {
         $salesFacadeMock = Stub::makeEmpty(SalesFacadeInterface::class, [
@@ -111,12 +98,6 @@ class AsyncApiTester extends Actor
         $this->addToLocatorCache('sales-facade', $salesFacadeMock);
     }
 
-    /**
-     * @param array $activeProcesses
-     * @param string|null $xmlFolder
-     *
-     * @return void
-     */
     public function configureTestStateMachine(array $activeProcesses, ?string $xmlFolder = null): void
     {
         $this->clearPersistenceManagerCache();
@@ -129,9 +110,6 @@ class AsyncApiTester extends Actor
         $this->setConfig(OmsConstants::ACTIVE_PROCESSES, $activeProcesses);
     }
 
-    /**
-     * @return void
-     */
     protected function clearPersistenceManagerCache(): void
     {
         $stateCacheProperty = new ReflectionProperty(PersistenceManager::class, 'stateCache');
@@ -142,12 +120,6 @@ class AsyncApiTester extends Actor
         $processCacheProperty->setValue([]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     protected function buildFakeQuote(CustomerTransfer $customerTransfer, StoreTransfer $storeTransfer): QuoteTransfer
     {
         $shipmentBuilder = (new ShipmentBuilder())

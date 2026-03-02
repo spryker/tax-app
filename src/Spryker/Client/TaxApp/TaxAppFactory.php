@@ -24,17 +24,11 @@ use Spryker\Shared\TaxApp\Dependency\Service\TaxAppToUtilEncodingServiceInterfac
  */
 class TaxAppFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\TaxApp\Api\Builder\TaxAppHeaderBuilderInterface
-     */
     public function createTaxAppHeaderBuilder(): TaxAppHeaderBuilderInterface
     {
         return new TaxAppHeaderBuilder($this->getStoreClient(), $this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Client\TaxApp\Api\Sender\TaxAppRequestSenderInterface
-     */
     public function createTaxAppRequestSender(): TaxAppRequestSenderInterface
     {
         return new TaxAppRequestSender(
@@ -45,9 +39,6 @@ class TaxAppFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\TaxApp\Zed\TaxAppStubInterface
-     */
     public function createZedStub(): TaxAppStubInterface
     {
         return new TaxAppStub(
@@ -55,33 +46,21 @@ class TaxAppFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Shared\TaxApp\Dependency\Service\TaxAppToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): TaxAppToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
-    /**
-     * @return \Spryker\Client\TaxApp\Dependency\External\TaxAppToHttpClientAdapterInterface
-     */
     public function getHttpClient(): TaxAppToHttpClientAdapterInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::CLIENT_HTTP);
     }
 
-    /**
-     * @return \Spryker\Client\TaxApp\Dependency\Client\TaxAppToStoreClientInterface
-     */
     public function getStoreClient(): TaxAppToStoreClientInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::CLIENT_STORE);
     }
 
-    /**
-     * @return \Spryker\Client\TaxApp\Dependency\Client\TaxAppToZedRequestClientInterface
-     */
     public function getZedRequestClient(): TaxAppToZedRequestClientInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::CLIENT_ZED_REQUEST);

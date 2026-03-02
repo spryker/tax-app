@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer;
 
 interface TaxAppRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigCollectionTransfer
-     */
     public function getTaxAppConfigCollection(TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer): TaxAppConfigCollectionTransfer;
 }

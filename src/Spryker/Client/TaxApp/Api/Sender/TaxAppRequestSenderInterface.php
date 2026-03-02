@@ -15,13 +15,6 @@ use Generated\Shared\Transfer\TaxRefundRequestTransfer;
 
 interface TaxAppRequestSenderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxCalculationRequestTransfer $taxCalculationRequestTransfer
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxCalculationResponseTransfer
-     */
     public function requestTaxQuotation(
         TaxCalculationRequestTransfer $taxCalculationRequestTransfer,
         TaxAppConfigTransfer $taxAppConfigTransfer,

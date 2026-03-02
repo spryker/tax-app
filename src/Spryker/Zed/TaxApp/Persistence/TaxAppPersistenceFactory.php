@@ -20,25 +20,16 @@ use Spryker\Zed\TaxApp\TaxAppDependencyProvider;
  */
 class TaxAppPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery
-     */
     public function createTaxAppConfigQuery(): SpyTaxAppConfigQuery
     {
         return SpyTaxAppConfigQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\TaxApp\Persistence\Mapper\TaxAppConfigMapper
-     */
     public function createTaxAppConfigMapper(): TaxAppConfigMapper
     {
         return new TaxAppConfigMapper($this->getUtilEncodingService());
     }
 
-    /**
-     * @return \Spryker\Shared\TaxApp\Dependency\Service\TaxAppToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): TaxAppToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(TaxAppDependencyProvider::SERVICE_UTIL_ENCODING);

@@ -22,11 +22,6 @@ class TaxAppConfigurationCouldNotBeDeleted extends Exception
      */
     protected const EXCEPTION_MESSAGE_ADDITIONAL_MESSAGE_TEMPLATE = self::EXCEPTION_MESSAGE . ' Details: %s';
 
-    /**
-     * @param string $message
-     * @param int $code
-     * @param \Throwable|null $previous
-     */
     public function __construct(string $message = self::EXCEPTION_MESSAGE, int $code = 0, ?Throwable $previous = null)
     {
         if ($message) {

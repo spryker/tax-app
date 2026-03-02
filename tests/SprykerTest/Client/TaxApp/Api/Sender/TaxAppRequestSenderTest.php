@@ -37,9 +37,6 @@ class TaxAppRequestSenderTest extends Unit
      */
     protected TaxAppClientTester $tester;
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestHasSuccessfulResponseTransfer(): void
     {
         // Arrange
@@ -59,9 +56,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertTrue($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxRefundRequestHasSuccessfulResponseTransfer(): void
     {
         // Arrange
@@ -81,9 +75,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertTrue($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestHasUnsuccessfulResponseTransferWhenHttpResponseIsEmpty(): void
     {
         // Arrange
@@ -103,9 +94,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertFalse($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestHasUnsuccessfulResponseTransferWhenQuotationUrlIsMissing(): void
     {
         // Arrange
@@ -125,9 +113,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertFalse($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxRefundRequestHasUnsuccessfulResponseTransferWhenQuotationUrlIsMissing(): void
     {
         // Arrange
@@ -147,9 +132,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertFalse($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestHasUnsuccessfulResponseTransferWhenHttpResponseContainsError(): void
     {
         // Arrange
@@ -169,9 +151,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertFalse($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestSucceedsWhenTenantIdentifierIsPresent(): void
     {
         // Arrange
@@ -191,9 +170,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertTrue($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestFailsWhenNeitherTenantIdentifierOrStoreArePresent(): void
     {
         // Arrange
@@ -212,9 +188,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertStringContainsString('Tenant identifier or store reference or store name must be set.', $responseTransfer->getApiErrorMessages()[0]->getDetail());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestSucceedsWhenTenantIdentifierIsNotPresentButStoreIsPresent(): void
     {
         // Arrange
@@ -233,9 +206,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertTrue($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestHasSuccessfulResponseTransferWithCorrectHeadersWhenStoreReferenceIsSet(): void
     {
         // Arrange
@@ -266,9 +236,6 @@ class TaxAppRequestSenderTest extends Unit
         $this->assertTrue($responseTransfer->getIsSuccessful());
     }
 
-    /**
-     * @return void
-     */
     public function testTaxQuotationRequestHasSuccessfulResponseTransferWithCorrectHeadersWhenTenantIdentifierIsSet(): void
     {
         // Arrange

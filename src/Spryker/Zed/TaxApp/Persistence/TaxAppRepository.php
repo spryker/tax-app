@@ -19,11 +19,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
  */
 class TaxAppRepository extends AbstractRepository implements TaxAppRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigCollectionTransfer
-     */
     public function getTaxAppConfigCollection(TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer): TaxAppConfigCollectionTransfer
     {
         $taxAppCollectionTransfer = new TaxAppConfigCollectionTransfer();
@@ -47,12 +42,6 @@ class TaxAppRepository extends AbstractRepository implements TaxAppRepositoryInt
             ->mapTaxAppConfigEntitiesToTaxAppConfigCollectionTransfer($taxAppConfigEntities, $taxAppCollectionTransfer);
     }
 
-    /**
-     * @param \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery $taxAppConfigQuery
-     * @param \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
-     *
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery
-     */
     protected function applyTaxAppConfigFilters(
         SpyTaxAppConfigQuery $taxAppConfigQuery,
         TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
@@ -76,12 +65,6 @@ class TaxAppRepository extends AbstractRepository implements TaxAppRepositoryInt
         return $taxAppConfigQuery;
     }
 
-    /**
-     * @param \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery $taxAppConfigQuery
-     * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
-     *
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery
-     */
     protected function applyTaxAppConfigPagination(
         SpyTaxAppConfigQuery $taxAppConfigQuery,
         PaginationTransfer $paginationTransfer
@@ -97,12 +80,6 @@ class TaxAppRepository extends AbstractRepository implements TaxAppRepositoryInt
         return $taxAppConfigQuery;
     }
 
-    /**
-     * @param \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery $taxAppConfigQuery
-     * @param \Generated\Shared\Transfer\TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer
-     *
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfigQuery
-     */
     protected function applyTaxAppConfigSorting(
         SpyTaxAppConfigQuery $taxAppConfigQuery,
         TaxAppConfigCriteriaTransfer $taxAppConfigCriteriaTransfer

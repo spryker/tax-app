@@ -23,20 +23,11 @@ class TaxAppConfigMapper
      */
     protected TaxAppToUtilEncodingServiceInterface $utilEncodingService;
 
-    /**
-     * @param \Spryker\Shared\TaxApp\Dependency\Service\TaxAppToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(TaxAppToUtilEncodingServiceInterface $utilEncodingService)
     {
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     * @param \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfig $taxAppConfigEntity
-     *
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfig
-     */
     public function mapTaxAppConfigTransferToTaxAppConfigEntity(
         TaxAppConfigTransfer $taxAppConfigTransfer,
         SpyTaxAppConfig $taxAppConfigEntity
@@ -51,12 +42,6 @@ class TaxAppConfigMapper
         return $taxAppConfigEntity;
     }
 
-    /**
-     * @param \Orm\Zed\TaxApp\Persistence\SpyTaxAppConfig $spyTaxAppConfigTransfer
-     * @param \Generated\Shared\Transfer\TaxAppConfigTransfer $taxAppConfigTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigTransfer
-     */
     public function mapTaxAppConfigEntityToTaxAppConfigTransfer(
         SpyTaxAppConfig $spyTaxAppConfigTransfer,
         TaxAppConfigTransfer $taxAppConfigTransfer
@@ -73,12 +58,6 @@ class TaxAppConfigMapper
         return $taxAppConfigTransfer;
     }
 
-    /**
-     * @param \Propel\Runtime\Collection\Collection $taxAppConfigEntities
-     * @param \Generated\Shared\Transfer\TaxAppConfigCollectionTransfer $taxAppConfigCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\TaxAppConfigCollectionTransfer
-     */
     public function mapTaxAppConfigEntitiesToTaxAppConfigCollectionTransfer(
         Collection $taxAppConfigEntities,
         TaxAppConfigCollectionTransfer $taxAppConfigCollectionTransfer
@@ -92,12 +71,6 @@ class TaxAppConfigMapper
         return $taxAppConfigCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TaxIdValidationHistoryTransfer $taxIdValidationHistoryTransfer
-     * @param \Orm\Zed\TaxApp\Persistence\SpyTaxIdValidationHistory $taxIdValidationHistoryEntity
-     *
-     * @return \Orm\Zed\TaxApp\Persistence\SpyTaxIdValidationHistory
-     */
     public function mapTaxIdValidationHistoryTransferToTaxIdValidationHistoryEntity(
         TaxIdValidationHistoryTransfer $taxIdValidationHistoryTransfer,
         SpyTaxIdValidationHistory $taxIdValidationHistoryEntity
