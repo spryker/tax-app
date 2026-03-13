@@ -188,7 +188,7 @@ class TaxAppFacadeCalculationTest extends Unit
         // Arrange
         $calculableObjectTransfer = $this->tester->haveCalculableObjectTransferWithMerchantStockAddress($this->storeTransfer);
 
-        $taxAppClientMock = $this->makeEmpty(TaxAppClientInterface::class);
+        $taxAppClientMock = $this->createMock(TaxAppClientInterface::class);
         $taxCalculationResponseTransfer = $this->tester->haveTaxCalculationResponseTransfer(['isSuccessful' => true]);
         $taxAppClientMock->expects($this->once())->method('requestTaxQuotation')->willReturn($taxCalculationResponseTransfer);
         $this->tester->mockFactoryMethod('getTaxAppClient', $taxAppClientMock);
@@ -203,7 +203,7 @@ class TaxAppFacadeCalculationTest extends Unit
     public function testCalculableObjectHasSaleTransferWithItemsWhenMerchantStockAddressIsEmpty(): void
     {
         // Arrange
-        $taxAppClientMock = $this->makeEmpty(TaxAppClientInterface::class);
+        $taxAppClientMock = $this->createMock(TaxAppClientInterface::class);
         $taxCalculationResponseTransfer = $this->tester->haveTaxCalculationResponseTransfer(['isSuccessful' => true]);
         $taxAppClientMock->expects($this->once())->method('requestTaxQuotation')->willReturn($taxCalculationResponseTransfer);
         $this->tester->mockFactoryMethod('getTaxAppClient', $taxAppClientMock);
