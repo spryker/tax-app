@@ -45,6 +45,7 @@ class SubmitPaymentTaxInvoiceTest extends Unit
     public function testSubmitPaymentTaxInvoiceWhenStoreReferenceIsProvidedThenMessageIsSent(): void
     {
         // Arrange
+        $this->tester->setupMessageBroker(SubmitPaymentTaxInvoiceTransfer::class, 'payment-tax-invoice-commands');
         $this->tester->configureTestStateMachine([static::DEFAULT_OMS_PROCESS_NAME]);
         $orderTransfer = $this->tester->getOrderTransferForSubmitPaymentTaxInvoice();
         $this->tester->mockSalesFacadeFindOrderByIdSalesOrderMethod($orderTransfer);
