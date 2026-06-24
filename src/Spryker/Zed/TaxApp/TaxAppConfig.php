@@ -13,11 +13,15 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 class TaxAppConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const MESSAGE_TAX_APP_IS_DISABLED = 'Tax service is disabled.';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const MESSAGE_TAX_VALIDATOR_IS_UNAVAILABLE = 'Tax Validator API is unavailable.';
