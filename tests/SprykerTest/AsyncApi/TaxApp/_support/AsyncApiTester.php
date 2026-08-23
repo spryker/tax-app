@@ -113,10 +113,8 @@ class AsyncApiTester extends Actor
     protected function clearPersistenceManagerCache(): void
     {
         $stateCacheProperty = new ReflectionProperty(PersistenceManager::class, 'stateCache');
-        $stateCacheProperty->setAccessible(true);
         $stateCacheProperty->setValue([]);
         $processCacheProperty = new ReflectionProperty(PersistenceManager::class, 'processCache');
-        $processCacheProperty->setAccessible(true);
         $processCacheProperty->setValue([]);
     }
 
