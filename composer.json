@@ -46,7 +46,8 @@
         "psr-4": {
             "Spryker\\": "src/Spryker/",
             "SprykerTest\\Shared\\TaxApp\\Helper\\": "tests/SprykerTest/Shared/TaxApp/_support/Helper/",
-            "SprykerTest\\AsyncApi\\TaxApp\\Helper\\": "tests/SprykerTest/AsyncApi/TaxApp/_support/Helper/"
+            "SprykerTest\\AsyncApi\\TaxApp\\Helper\\": "tests/SprykerTest/AsyncApi/TaxApp/_support/Helper/",
+            "SprykerTest\\Zed\\TaxApp\\Helper\\": "tests/SprykerTest/Zed/TaxApp/_support/Helper/"
         }
     },
     "autoload-dev": {
