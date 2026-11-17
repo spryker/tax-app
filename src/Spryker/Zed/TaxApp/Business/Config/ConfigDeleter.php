@@ -60,8 +60,8 @@ class ConfigDeleter implements ConfigDeleterInterface
         }
     }
 
-    protected function logException(Exception $e): void
+    protected function logException(Exception $exception): void
     {
-        $this->getLogger()->error(sprintf(static::LOG_MESSAGE_CONFIG_DELETION_FAILED, $e->getMessage()), ['exception' => $e]);
+        $this->getLogger()->error(sprintf(static::LOG_MESSAGE_CONFIG_DELETION_FAILED, $exception->getMessage()), ['exception' => $exception]);
     }
 }

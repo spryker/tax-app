@@ -165,13 +165,15 @@ class TaxAppRequestSender implements TaxAppRequestSenderInterface
         return $taxCalculationResponseTransfer;
     }
 
-    protected function getErrorMessage(Throwable|Exception $e, TaxCalculationResponseTransfer $taxCalculationResponseTransfer): TaxCalculationResponseTransfer
-    {
-        $errorTransfer = (new ApiErrorMessageTransfer())->setCode($e->getCode())->setDetail($e->getMessage());
+    protected function getErrorMessage(
+        Throwable|Exception $exception,
+        TaxCalculationResponseTransfer $taxCalculationResponseTransfer
+    ): TaxCalculationResponseTransfer {
+        $errorTransfer = (new ApiErrorMessageTransfer())->setCode($exception->getCode())->setDetail($exception->getMessage());
         $taxCalculationResponseTransfer->setIsSuccessful(false);
         $taxCalculationResponseTransfer->addApiErrorMessage($errorTransfer);
 
-        $this->getLogger()->error(sprintf(static::MESSAGE_REQUEST_FAILED, $e->getMessage()), ['exception' => $e]);
+        $this->getLogger()->error(sprintf(static::MESSAGE_REQUEST_FAILED, $exception->getMessage()), ['exception' => $exception]);
 
         return $taxCalculationResponseTransfer;
     }
